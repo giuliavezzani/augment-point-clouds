@@ -22,6 +22,6 @@ for i in $(seq 1 $END); do
 done
 
 for i in $(seq 1 $END); do
-	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/toy/point_cloud_box+rotation_no_$i --object only-trasl --number $i
+	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/only-trasl/point_cloud_box+rotation_no_$i --object only-trasl --number $i
 done
 
