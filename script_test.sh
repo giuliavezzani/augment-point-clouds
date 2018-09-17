@@ -1,27 +1,25 @@
 #!/bin/bash
 
-END=2
-for i in $(seq 1 $END); do
-	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/box/point_cloud_box+rotation_no_$i --object box --number $i
+END=0
+for i in $(seq 0 $END); do
+	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/only-trasl/box/point_cloud_box_trasl+rotation_no_$i --object box_trasl --number $i
 done
 
-for i in $(seq 1 $END); do
-	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/car/point_cloud_car+rotation_no_$i --object car --number $i
+for i in $(seq 0 $END); do
+	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/only-trasl/car/point_cloud_car_trasl+rotation_no_$i --object car_trasl --number $i
 done
 
-for i in $(seq 1 $END); do
-	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/cleanser/point_cloud_cleanser+rotation_no_$i --object cleanser --number $i
+for i in $(seq 0 $END); do
+	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/only-trasl/cleanser/point_cloud_cleanser_only_trasl+rotation_no_$i --object cleanser_trasl --number $i
 done
 
-for i in $(seq 1 $END); do
-	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/cylinder/point_cloud_cylinder+rotation_no_$i --object cylinder --number $i
+for i in $(seq 0 $END); do
+	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/only-trasl/cylinder/point_cloud_cylinder+rotation_no_$i --object cylinder_trasl --number $i
 done
 
-for i in $(seq 1 $END); do
-	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/toy/point_cloud_toy+rotation_no_$i --object toy --number $i
+for i in $(seq 0 $END); do
+	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/only-trasl/toy/point_cloud_toy+rotation_no_$i --object toy_trasl --number $i
 done
 
-for i in $(seq 1 $END); do
-	superq-and-grasp-visualizer --hand both --get_grasping_pose --remove-outliers "(0.01 10)" --file data/only-trasl/point_cloud_box+rotation_no_$i --object only-trasl --number $i
-done
+
 

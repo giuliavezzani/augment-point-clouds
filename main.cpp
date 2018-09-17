@@ -73,7 +73,9 @@ class Augmenter : public RFModule
         double theta_zyz, phi_zyz, psi_zyz;
         theta_zyz=phi_zyz=psi_zyz=0.0;
 
-        for (size_t j=0; j<24; j++)
+        int num_poses=3;
+
+        for (size_t j=0; j<num_poses; j++)
         {
             Matrix pose(4,4);
             pose.eye();
@@ -147,7 +149,7 @@ class Augmenter : public RFModule
             Vector eulers(3,0.0);
             eulers[0]=phi_zyz; eulers[1]=theta_zyz; eulers[2]=psi_zyz;
 
-            pose.setSubmatrix(euler2dcm(eulers), 0,0);
+            //pose.setSubmatrix(euler2dcm(eulers), 0,0);
             pose.setSubcol(center, 0,3);
 
             desired_pc_poses.push_back(pose);
@@ -182,24 +184,21 @@ class Augmenter : public RFModule
 
 
         // At the beginning let's leave the current z coordinate
-        for (size_t j=0; j<24; j++)
+        for (size_t j=0; j<num_poses; j++)
         {
             desired_pc_poses[j](2,3)=x0[2];
         }
 
-        for (size_t j=0; j<24; j++)
+        for (size_t j=0; j<num_poses; j++)
         {
 
              new_points.clear();
              Matrix transformation(4,4);
              transformation.eye();
 
-
-
-             //transformation=desired_pc_poses[j]*SE3inv(R_pc);
+             transformation=desired_pc_poses[j]*SE3inv(R_pc);
              // Test only trasl
-             transformation=desired_pc_poses[j];
-
+             //transformation=desired_pc_poses[j];
 
              for (size_t i=0; i<all_points.size();i++)
              {
